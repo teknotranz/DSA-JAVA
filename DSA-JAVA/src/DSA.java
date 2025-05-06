@@ -183,6 +183,83 @@ public class DSA {
     }
 
 
+    //maximum sum of a contiguous array
+    public void slidingWindow1(){
+        int[] arr = new int[]{4, 2, 1, 7, 8, 1, 2, 8, 21};
+        int maxSum = 0;
+
+        if(arr.length < 3){
+            for(int i = 0; i < arr.length; i++){
+                maxSum = arr[i] + maxSum;
+            }
+            System.out.println("less than three elements, max sum: " + maxSum);
+        }
+
+        //for arr > 3
+        //initialize the first 3 elements contain the max contiguous subarray
+        for(int i = 0;  i < 3; i++){
+            maxSum = arr[i] + maxSum;
+        }
+        int runningSum = maxSum;
+        //start loop at index 1 up to the n-2
+        //add the value of current index plus the next two
+//        for(int i = 1; i < arr.length-3; i++){
+//            int num1 = arr[i];
+//            int num2 = arr[i+1];
+//            int num3 = arr[i+2];
+//            int currSum = num1 + num2 + num3;
+//            if(currSum > maxSum){
+//                maxSum = currSum;
+//            }
+//        }
+
+        //the issue with this is that we keep summing part
+        //that already been calculated, values that need
+        //to change are the left and right most indexes
+
+        for(int i = 3; i < arr.length; i++){
+            //remove the left most index
+            //then add the current index
+            runningSum = runningSum - arr[i-3];
+            runningSum = runningSum + arr[i];
+            if(runningSum > maxSum){
+                maxSum = runningSum;
+            }
+        }
+
+        System.out.println(maxSum);
+
+    }
+
+
+    /**
+     * using two pointer. left at index 0 and right at last index
+     * compare two until the pointers cross
+     */
+    public void isPalindrome(){
+        String input = "level";
+        if (input == null ||  input.isEmpty() || input.length() < 3){
+            System.out.println("No solution");
+            return;
+        }
+        char leftChar = ' ';
+        char rightChar = ' ';
+        int leftPointer = 0;
+        int rightPointer = input.length()-1;
+        while(leftPointer < rightPointer){
+            if(input.charAt(leftPointer) == input.charAt(rightPointer)){
+                leftPointer++;
+                rightPointer--;
+            }else{
+                System.out.println("NOT PALINDROME");
+                return;
+            }
+
+        }
+        System.out.println("PALINDROME");
+        
+    }
+
     //</editor-fold>
 
 
