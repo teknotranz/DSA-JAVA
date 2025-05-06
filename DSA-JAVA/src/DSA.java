@@ -260,6 +260,63 @@ public class DSA {
         
     }
 
+    //two strings are anagram if they contain the same letters
+    //meaning: hello vs elloh are anagrams. two same words just jumbled
+    //compare first by length, if not equal then it's not
+    //brute is to sort it first then compare by character by character
+    //loop string A, use hashmap to store key(char) as the char, value(int) is count
+
+    //
+    /**
+     * or use the a-z frequency
+     * array of int size of 26. alphabet chars
+     * string s1 = 'aabbcc'
+     * string s2 = 'ccaabb'
+     * for explanation let's do two loops
+     * we use minus 'a' for the int equivalent of ascii.
+     * say lower char ascii is 50-75
+     * loop s1,
+     * first char is a =>  freq[s1.charAt(0) - 'a'] this equal to zero, increment index 0
+     * second char is a => freq[s1.charAt(1) - 'a'] this equal to zero, increment index 0
+     * third char is b => freq[s1.chArt(2) - 'a'] this equal to 1 (assuming b is 51 and a is 50 in ascii)
+     *      therefore increment index 1
+     * repeat this until freq = {2, 2, ,2, .... 0}
+     *
+     * loop s2,
+     * same setup,
+     * first char is c => freq[s1.charAt(0) - 'a'] this equal to 3, decrement index,
+     * same setup decerement the index to whatever the result of freq[s1.charAt(i) - 'a']
+     * if freq array is all zeroes, means anagram. it is not otherwise.
+     *
+     * final check is loop the freq aray, if current index is not zero, not anagram
+     *
+     * so now instead of two for loops we just combine it
+     *
+     * for(int i=0; i < n; i++){
+     *     s1 does incrementing
+     *     s2 does decrementing
+     * }
+     *
+     */
+
+
+    public   boolean isAnagram(String s1, String s2) {
+
+    }
+
+    //TODO: PIPOY
+    //use recurion
+    //if first and last is same char, remove it then pass the trimmed string
+    //base case if the input is string is less than 1 means, it IS a palindrome
+    //if not compare first and last, a mismatch IS NOT a palindrome
+    //recursion but remove first and last char
+    public boolean isPalindromeRecursion(String input){
+        return false;
+
+    }
+
+
+
     //</editor-fold>
 
 
